@@ -1,0 +1,19 @@
+{
+  "name": "hawaii-ice-cream",
+  "version": "1.0.0",
+  "description": "Luxury Ice Cream Shop Website - Hawaii",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": ["ice-cream", "shop", "ecommerce"],
+  "author": "Mohamed Alas3d",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5"
+  }
+}

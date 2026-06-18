@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مثلجات هاواي - Hawaii Ice Cream</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-ice-cream"></i>
+                    <span>مثلجات هاواي</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" onclick="navigateTo('home')">الرئيسية</a></li>
+                <li><a href="#" onclick="navigateTo('menu')">المنيو</a></li>
+                <li><a href="#" onclick="navigateTo('contact')">التواصل</a></li>
+                <li><a href="#" onclick="navigateTo('admin')"><i class="fas fa-cog"></i> لوحة التحكم</a></li>
+                <li>
+                    <a href="#" onclick="navigateTo('cart')" class="cart-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <div class="animated-background"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">مثلجات هاواي</h1>
+                    <p class="hero-subtitle">تجربة فاخرة من الحلويات المتجمدة</p>
+                    <button class="btn btn-primary" onclick="navigateTo('menu')">اطلب الآن</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Page -->
+        <section id="menu" class="page">
+            <div class="container">
+                <h2 class="page-title">منيو المنتجات</h2>
+                <div class="category-filter">
+                    <button class="filter-btn active" onclick="filterCategory('all')">الكل</button>
+                    <button class="filter-btn" onclick="filterCategory('strawberry')">فراولة</button>
+                    <button class="filter-btn" onclick="filterCategory('chocolate')">شوكولاتة</button>
+                    <button class="filter-btn" onclick="filterCategory('vanilla')">فانيليا</button>
+                    <button class="filter-btn" onclick="filterCategory('pistachio')">فستق</button>
+                    <button class="filter-btn" onclick="filterCategory('special')">خاص</button>
+                </div>
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Page -->
+        <section id="cart" class="page">
+            <div class="container">
+                <h2 class="page-title">السلة</h2>
+                <div class="cart-container">
+                    <div class="cart-items" id="cartItems">
+                        <!-- Cart items will be displayed here -->
+                    </div>
+                    <div class="cart-summary">
+                        <div class="summary-item">
+                            <span>السعر الأساسي:</span>
+                            <span id="subtotal">0$</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>التوصيل:</span>
+                            <span id="deliveryCost">0$</span>
+                        </div>
+                        <div class="summary-item discount" id="discountItem" style="display:none;">
+                            <span>الخصم:</span>
+                            <span id="discountAmount">0$</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>الإجمالي:</span>
+                            <span id="totalPrice">0$</span>
+                        </div>
+                        
+                        <div class="delivery-options">
+                            <h3>طريقة الاستلام</h3>
+                            <label class="delivery-option">
+                                <input type="radio" name="delivery" value="pickup" onchange="updateDelivery()" checked>
+                                <span>استلام من المتجر</span>
+                            </label>
+                            <label class="delivery-option">
+                                <input type="radio" name="delivery" value="delivery" onchange="updateDelivery()">
+                                <span>توصيل <span class="delivery-price" id="deliveryPrice"></span></span>
+                            </label>
+                        </div>
+                        
+                        <textarea id="orderNotes" placeholder="ملاحظات إضافية..."></textarea>
+                        
+                        <button class="btn btn-primary btn-full" onclick="sendViaWhatsapp()">إرسال عبر واتساب</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="page">
+            <div class="container">
+                <h2 class="page-title">تواصل معنا</h2>
+                <div class="contact-section">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h3>الهاتف</h3>
+                                <a href="tel:+963956492267">+963 9 5649 2267</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-facebook"></i>
+                            <div>
+                                <h3>فيسبوك</h3>
+                                <a href="https://www.facebook.com/Hawai.Ice.sy" target="_blank">Hawai.Ice.sy</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <div>
+                                <h3>إنستغرام</h3>
+                                <a href="https://www.instagram.com/hawai.ice.sy" target="_blank">@hawai.ice.sy</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-tiktok"></i>
+                            <div>
+                                <h3>تيك توك</h3>
+                                <a href="https://www.tiktok.com/@hawai.ice.sy" target="_blank">@hawai.ice.sy</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>الموقع</h3>
+                                <a href="https://www.google.com/maps/search/?api=1&query=36.20900921315,36.77245259285" target="_blank">عرض على الخريطة</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Panel -->
+        <section id="admin" class="page">
+            <div class="container">
+                <h2 class="page-title">لوحة التحكم</h2>
+                <div class="admin-panel">
+                    <div class="admin-section">
+                        <h3>إضافة منتج جديد</h3>
+                        <form id="productForm" onsubmit="addProduct(event)">
+                            <input type="text" id="productName" placeholder="اسم المنتج" required>
+                            <select id="productCategory" required>
+                                <option value="">اختر الفئة</option>
+                                <option value="strawberry">فراولة</option>
+                                <option value="chocolate">شوكولاتة</option>
+                                <option value="vanilla">فانيليا</option>
+                                <option value="pistachio">فستق</option>
+                                <option value="special">خاص</option>
+                            </select>
+                            <input type="number" id="productPrice" placeholder="السعر" step="0.01" required>
+                            <input type="text" id="productImage" placeholder="رابط الصورة" required>
+                            <textarea id="productDescription" placeholder="الوصف"></textarea>
+                            <button type="submit" class="btn btn-primary">إضافة منتج</button>
+                        </form>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h3>إضافة إضافة جديدة</h3>
+                        <form id="addonForm" onsubmit="addAddon(event)">
+                            <input type="text" id="addonName" placeholder="اسم الإضافة" required>
+                            <input type="number" id="addonPrice" placeholder="السعر" step="0.01" required>
+                            <button type="submit" class="btn btn-primary">إضافة</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- WhatsApp Confirmation Modal -->
+    <div id="whatsappModal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle"></i>
+            <p>لقد قمت بفتح واتساب لإرسال الطلب.<br>هل ترغب بإفراغ السلة؟</p>
+            <div class="modal-buttons">
+                <button class="btn btn-primary" onclick="clearCart()">نعم</button>
+                <button class="btn btn-secondary" onclick="closeModal()">لا</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
